@@ -1,0 +1,11 @@
+{
+  "name": "Test the Beat!",
+  "difficulties": [
+	{
+	  "name": "Easy...",
+	  "flag": "E",
+	  "stars": 1
+	}
+  ]
+}
+

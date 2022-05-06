@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://reusable/ddrarrows/arrow_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://reusable/ddrcol/ddrcol.gd" type="Script" id=2]
+
+[node name="Control" type="Control"]
+anchor_bottom = 1.0
+margin_right = 34.0
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_right = 34.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 34, 34 )
+
+[node name="Arrow" parent="VBoxContainer/Control" instance=ExtResource( 1 )]
+position = Vector2( 17, 17 )
+scale = Vector2( 2, 2 )
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+margin_top = 38.0
+margin_right = 34.0
+margin_bottom = 562.0
+size_flags_vertical = 3
+
+[node name="Control3" type="Control" parent="VBoxContainer"]
+margin_top = 566.0
+margin_right = 34.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 34, 34 )
+
+[node name="Control" type="Control" parent="VBoxContainer/Control3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Node2D" type="Node2D" parent="VBoxContainer/Control3/Control"]

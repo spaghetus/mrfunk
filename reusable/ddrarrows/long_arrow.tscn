@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://reusable/ddrarrows/arrow_anim.gd" type="Script" id=1]
+[ext_resource path="res://gfx/arrows/Arrows-pixels.webp" type="Texture" id=2]
+[ext_resource path="res://gfx/arrows/ArrowEnds.webp" type="Texture" id=3]
+[ext_resource path="res://reusable/ddrarrows/tail_end_tracker.gd" type="Script" id=4]
+[ext_resource path="res://reusable/follow/follow.tscn" type="PackedScene" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 17, 17, 17 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 7, 1 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 7, 7, 5 )
+
+[node name="Node2D" type="Sprite"]
+z_index = 2
+texture = SubResource( 1 )
+script = ExtResource( 1 )
+w = 17
+h = 17
+frame_index = 1
+
+[node name="Tail" type="Node2D" parent="."]
+
+[node name="follower" parent="Tail" instance=ExtResource( 5 )]
+follow_target_path = NodePath("../..")
+
+[node name="TailEndParent" type="Node2D" parent="."]
+rotation = -1.5708
+z_index = -1
+script = ExtResource( 4 )
+tail_path = NodePath("../Tail")
+head_path = NodePath("..")
+
+[node name="TailMiddle" type="Sprite" parent="TailEndParent"]
+position = Vector2( -1.90735e-06, 0 )
+scale = Vector2( 1, -2 )
+z_index = -1
+texture = SubResource( 3 )
+script = ExtResource( 1 )
+w = 7
+h = 1
+
+[node name="TailEnd" type="Sprite" parent="TailEndParent"]
+position = Vector2( 0, -2.5 )
+z_index = -1
+texture = SubResource( 2 )
+script = ExtResource( 1 )
+w = 7
+h = 7
+frame_index = 1

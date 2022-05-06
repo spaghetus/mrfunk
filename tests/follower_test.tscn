@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://reusable/ddrarrows/long_arrow.tscn" type="PackedScene" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+var noise = OpenSimplexNoise.new()
+onready var start_pos = global_position
+var timer = 0
+
+func _process(delta):
+	timer += delta * 25
+	global_position = start_pos + Vector2(
+		noise.get_noise_1d(timer),
+		noise.get_noise_1d(-timer)
+	) * 100
+#	pass
+"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 148, 94 )
+script = SubResource( 1 )
+
+[node name="Node2D2" parent="Node2D" instance=ExtResource( 1 )]
